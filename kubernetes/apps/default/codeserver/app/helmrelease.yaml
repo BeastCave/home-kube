@@ -1,0 +1,32 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: code-server
+  namespace: default
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: code-server
+      version: 2.0.2
+      sourceRef:
+        kind: HelmRepository
+        name: nicholaswilde
+        namespace: flux-system
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+values:
+  ingress:
+  enabled: true
+
+  persistence:
+    config:
+      enabled: true
+      emptyDir: false
+      mountPath: /config
