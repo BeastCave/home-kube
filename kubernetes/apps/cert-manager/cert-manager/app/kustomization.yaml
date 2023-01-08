@@ -4,7 +4,6 @@ kind: Kustomization
 namespace: cert-manager
 resources:
   - ./helmrelease.yaml
-  - ./prometheusrule.yaml
 configMapGenerator:
   - name: cert-manager-dashboard
     files:
