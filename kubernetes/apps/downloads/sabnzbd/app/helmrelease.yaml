@@ -41,16 +41,6 @@ spec:
         sabnzbd.downloads.svc.cluster,
         sabnzbd.downloads.svc.cluster.local,
         sabnzbd.glencook.tech
-      SABNZBD__API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: sabnzbd-secrets
-            key: api_key
-      SABNZBD__NZB_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: sabnzbd-secrets
-            key: nzb_key
 
     service:
       main:
@@ -82,7 +72,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas.bjw-s.tech"
+        server: "192.168.1.10"
         path: /volume1/Media
         mountPath: /data/nas-media
       incomplete:

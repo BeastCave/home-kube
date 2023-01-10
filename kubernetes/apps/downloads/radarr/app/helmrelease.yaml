@@ -37,11 +37,6 @@ spec:
       RADARR__PORT: &port 7878
       RADARR__APPLICATION_URL: "https://radarr.glencook.tech"
       RADARR__LOG_LEVEL: info
-      RADARR__API_KEY:
-        valueFrom:
-          secretKeyRef:
-            name: radarr-secrets
-            key: api_key
 
     service:
       main:
@@ -74,7 +69,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        server: "nas.bjw-s.tech"
+        server: "192.168.1.10"
         path: /volume1/Media
         mountPath: /data/nas-media
 
