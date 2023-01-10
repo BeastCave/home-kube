@@ -21,12 +21,12 @@ spec:
   upgrade:
     remediation:
       retries: 3
-values:
-  ingress:
-  enabled: true
+  values:
+    ingress:
+    enabled: true
 
-  persistence:
-    config:
-      enabled: true
-      emptyDir: false
-      mountPath: /config
+    persistence:
+      config:
+        enabled: true
+        emptyDir: false
+        mountPath: /config
