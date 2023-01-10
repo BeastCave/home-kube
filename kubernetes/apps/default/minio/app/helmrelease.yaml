@@ -40,9 +40,6 @@ spec:
       MINIO_PROMETHEUS_JOB_ID: minio
       MINIO_BROWSER_REDIRECT_URL: https://minio.glencook.tech
       MINIO_SERVER_URL: https://s3.glencook.tech
-    envFrom:
-      - secretRef:
-          name: minio-secret
     args: ["server", "/data", "--console-address", ":9001"]
     service:
       main:
@@ -62,9 +59,6 @@ spec:
             path: /minio/v2/metrics/cluster
             interval: 1m
             scrapeTimeout: 10s
-            bearerTokenSecret:
-              name: minio-secret
-              key: MINIO_PROMETHEUS_TOKEN
     probes:
       liveness: &probes
         enabled: true
